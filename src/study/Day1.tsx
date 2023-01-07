@@ -1,4 +1,4 @@
-export const Study = () => {
+export const Day1 = () => {
   const name: string = "소영";
   const age: number = 28;
   const merried: boolean = false;
@@ -87,7 +87,7 @@ export const Study = () => {
     name: "지영",
   };
 
-  girlfriend.name = "민영";
+  // girlfriend.name = "민영";
   //하면 원래는 변경되는데 타입 지정해두면 못 바꿈
   // 근데 실제로는 실행 됨 ㅠ
   //object 속성 안에도 ? 사용가능 (undefind)
@@ -120,6 +120,18 @@ export const Study = () => {
   function bo(a: "가위" | "바위" | "보"): ("가위" | "바위" | "보")[] {
     return ["바위"];
   }
+
+  // Literal type의 문제점은
+  var nan = { name: "kim" } as const;
+  function no(a: "kim") {}
+
+  no(nan.name); //이라고 작성시 타입은 문자이므로 오류가 납니다
+  // 파라미터의 타입을 kim이라는 문자로 지정했지만 "kim"이라는 자료만 들어올 수 있읍니다 (X)
+  // "kim"이라는 타입만 들어올 수 있습니다(O)
+
+  //해결법 변수에 타입을 kim으로 지정하거나, as 문법으로 거짓말을...(??)
+  // ⚠️ as const == object 타입 지정을 literal type으로 해 주세요
+  // === object 속성을 모두 readonly로 해 주세요
 
   return <div>Study</div>;
 };
